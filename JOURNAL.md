@@ -4,12 +4,32 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-09] — Creación del HomeScreen con Propiedades Mock
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: HomeScreen completamente funcional con filtrado en tiempo real, catálogo de propiedades mock y diseño premium adaptado al sistema de diseño.
+
+### Cambios Realizados:
+
+- **Estilos y Tipografía**: Configurados los colores premium oficiales y la tipografía `Inter` en `app/globals.css` y `app/layout.tsx`.
+- **Datos Mock**: Creado `app/data/mockProperties.ts` con 10 propiedades detalladas con imágenes reales de alta calidad.
+- **Componentes Modulares**:
+  - `components/Icons.tsx`: Iconos SVG locales.
+  - `components/Navbar.tsx`: Barra de navegación responsiva y sticky.
+  - `components/PropertyCard.tsx`: Tarjetas de propiedades con zoom hover y botón interactivo de favorito.
+- **Lógica de HomeScreen**: Implementado el buscador reactivo, filtros por categoría (Casas, Apartamentos, Villas, Penthouses), selector compra/renta, y paginación en `app/page.tsx`.
+- **Optimización de Imágenes**: Integración de `<Image>` de Next.js configurando los patrones remotos en `next.config.ts`.
+- **Verificación**: Compilación e inspección de ESLint exitosas sin errores.
+
+---
+
 ## [2026-07-09] — Instalación y Configuración de Prettier
 
 - **Autor**: Antigravity (AI Coding Assistant)
 - **Estado del Proyecto**: Configurado con Prettier para formateo automático de código.
 
 ### Cambios Realizados:
+
 - **Dependencias**: Instalación de `prettier` como dependencia de desarrollo.
 - **Archivos de Configuración**: Creación de `.prettierrc.json` (estilo idéntico a `kaisoft-restaurante`) y `.prettierignore`.
 - **Scripts**: Añadido script `"format"` a `package.json` para ejecutar Prettier.

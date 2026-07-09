@@ -1,7 +1,8 @@
 # Sistema de Diseño (Aura Estate)
 
 ## Paleta de Colores
-*Usar estrictamente estos valores hexadecimales:*
+
+_Usar estrictamente estos valores hexadecimales:_
 
 - **Midnight Onyx** — `#0A1A1A` (Color principal ultra oscuro, elegancia máxima)
 - **Desert Gold** — `#C9A96E` (Color primario de acción, lujo sutil)
@@ -10,6 +11,7 @@
 - **Sage Whisper** — `#8BA888` (Acento secundario, sofisticación orgánica)
 
 ### Aplicación de Colores:
+
 - **Fondo principal**: `Cloud White` (`#FAF8F6`)
 - **Botones primarios / CTA**: `Desert Gold` (`#C9A96E`)
 - **Headers / Navegación / Títulos**: `Midnight Onyx` (`#0A1A1A`)
