@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Navbar } from '../components/Navbar';
 import { PropertyCard } from '../components/PropertyCard';
 import { SearchAndFilters } from '../components/SearchAndFilters';
@@ -90,12 +91,12 @@ export default async function Home({ searchParams }: PageProps) {
               <p className="text-lg text-midnight-onyx/60">
                 No encontramos propiedades que coincidan con tu búsqueda.
               </p>
-              <a
+              <Link
                 href="/"
                 className="mt-4 inline-block px-6 py-2 bg-desert-gold text-midnight-onyx rounded-lg font-medium shadow-sm transition-all hover:bg-desert-gold/90"
               >
                 Limpiar Filtros
-              </a>
+              </Link>
             </div>
           ) : (
             <>

@@ -10,6 +10,7 @@ export interface Property {
   type: 'house' | 'apartment' | 'villa' | 'penthouse';
   purpose: 'sale' | 'rent';
   isExclusive?: boolean;
+  isFeatured?: boolean;
   isNew?: boolean;
 }
 
@@ -27,6 +28,7 @@ export const mockProperties: Property[] = [
     type: 'villa',
     purpose: 'sale',
     isExclusive: true,
+    isFeatured: true,
   },
   {
     id: 'prop-2',
@@ -133,6 +135,7 @@ export const mockProperties: Property[] = [
     type: 'villa',
     purpose: 'sale',
     isExclusive: true,
+    isFeatured: true,
   },
   {
     id: 'prop-10',
@@ -201,6 +204,7 @@ export const mockProperties: Property[] = [
     type: 'penthouse',
     purpose: 'rent',
     isExclusive: true,
+    isFeatured: true,
   },
   {
     id: 'prop-15',
@@ -281,5 +285,6 @@ export const mockProperties: Property[] = [
     type: 'villa',
     purpose: 'sale',
     isExclusive: true,
+    isFeatured: true,
   },
 ];

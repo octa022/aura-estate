@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { Search, Tune } from './Icons';
 
@@ -23,11 +23,12 @@ export const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
   const searchParams = useSearchParams();
 
   const [searchQuery, setSearchQuery] = useState(initialSearch);
+  const [prevInitialSearch, setPrevInitialSearch] = useState(initialSearch);
 
-  // Synchronize state if URL changes (e.g. reset button clicked elsewhere)
-  useEffect(() => {
+  if (initialSearch !== prevInitialSearch) {
+    setPrevInitialSearch(initialSearch);
     setSearchQuery(initialSearch);
-  }, [initialSearch]);
+  }
 
   const updateFilters = (updates: Record<string, string | null>) => {
     const params = new URLSearchParams(searchParams.toString());

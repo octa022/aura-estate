@@ -4,6 +4,26 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-23] — Incorporación de bandera 'Featured' para Colecciones Exclusivas
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Base de datos de Supabase y cliente de frontend modificados para filtrar/mapear por la bandera `is_featured`. Linter y Typescript completamente limpios.
+
+### Cambios Realizados:
+
+- **Base de Datos (Supabase)**:
+  - Creada la columna `is_featured` en la tabla `properties` y marcados los registros destacados iniciales (`prop-1`, `prop-9`, `prop-14`, `prop-20`) con `true`.
+- **Modelos y Frontend**:
+  - Actualizado `Property` en [app/data/mockProperties.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/data/mockProperties.ts) para incluir `isFeatured?: boolean` y marcadas las correspondientes propiedades simuladas.
+  - Modificado [app/lib/supabase.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/lib/supabase.ts) para mapear `is_featured` a `isFeatured` y actualizar filtros de obtención (`fetchProperties` excluye destacadas, `fetchFeaturedProperties` obtiene solo destacadas).
+  - Creada interfaz `SupabaseProperty` en `app/lib/supabase.ts` para eliminar todos los tipos `any` inseguros.
+- **Calidad de Código**:
+  - Corregido error de redirección Next.js en [app/page.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/page.tsx) reemplazando `<a>` con `<Link>`.
+  - Corregido warning de hooks de React en [components/SearchAndFilters.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/SearchAndFilters.tsx) al cambiar la sincronización basada en `useEffect` por sincronización directa en renderizado.
+  - Verificada la compilación exitosa y el linter sin alertas.
+
+---
+
 ## [2026-07-23] — Conexión con Supabase y Paginación en Servidor
 
 - **Autor**: Antigravity (AI Coding Assistant)
