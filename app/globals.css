@@ -15,13 +15,6 @@
   --font-sans: var(--font-inter), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a1a1a; /* Midnight Onyx */
-    --foreground: #faf8f6; /* Cloud White */
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);

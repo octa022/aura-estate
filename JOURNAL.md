@@ -4,6 +4,21 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-23] — Remoción del Modo Oscuro
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Modo oscuro removido por completo de la aplicación para mantener un diseño consistente y simplificado.
+
+### Cambios Realizados:
+
+- **Estilos Globales**: Removida la regla `@media (prefers-color-scheme: dark)` de [app/globals.css](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/globals.css) para evitar que se inviertan las variables del tema de forma automática por el sistema.
+- **Componentes**: Eliminadas todas las variantes de clase `dark:` en:
+  - [components/Navbar.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/Navbar.tsx)
+  - [components/PropertyCard.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/PropertyCard.tsx)
+  - [app/page.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/page.tsx)
+
+---
+
 ## [2026-07-09] — Creación del HomeScreen con Propiedades Mock
 
 - **Autor**: Antigravity (AI Coding Assistant)

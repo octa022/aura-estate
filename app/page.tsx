@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-cloud-white text-midnight-onyx dark:bg-midnight-onyx dark:text-cloud-white transition-colors duration-300">
+    <div className="flex flex-col min-h-screen bg-cloud-white text-midnight-onyx transition-colors duration-300">
       <Navbar onSearchClick={handleFocusSearch} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 w-full flex-grow">
@@ -80,7 +80,7 @@ export default function Home() {
 
             {/* Search Bar Input */}
             <div className="relative group max-w-2xl mx-auto shadow-sm transition-all focus-within:shadow-md">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-midnight-onyx/50 dark:text-cloud-white/50">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-midnight-onyx/50">
                 <Search
                   size={22}
                   className="group-focus-within:text-desert-gold transition-colors"
@@ -92,7 +92,7 @@ export default function Home() {
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="Busca por ciudad, barrio o tipo de propiedad..."
-                className="block w-full pl-12 pr-28 py-4 rounded-xl border border-midnight-onyx/10 bg-frosted-pearl/50 text-midnight-onyx shadow-inner placeholder-midnight-onyx/40 focus:outline-none focus:ring-2 focus:ring-desert-gold focus:bg-cloud-white dark:bg-white/5 dark:text-cloud-white dark:border-cloud-white/10 dark:placeholder-cloud-white/40 dark:focus:bg-midnight-onyx/50 text-lg transition-all"
+                className="block w-full pl-12 pr-28 py-4 rounded-xl border border-midnight-onyx/10 bg-frosted-pearl/50 text-midnight-onyx shadow-inner placeholder-midnight-onyx/40 focus:outline-none focus:ring-2 focus:ring-desert-gold focus:bg-cloud-white text-lg transition-all"
               />
               <button
                 onClick={() => setSearchQuery('')}
@@ -109,8 +109,8 @@ export default function Home() {
                 onClick={() => setSelectedType('all')}
                 className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   selectedType === 'all'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-md dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold dark:bg-white/5 dark:border-cloud-white/5 dark:text-cloud-white/70 dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-md'
+                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold'
                 }`}>
                 Todos
               </button>
@@ -118,8 +118,8 @@ export default function Home() {
                 onClick={() => setSelectedType('house')}
                 className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   selectedType === 'house'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-md dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold dark:bg-white/5 dark:border-cloud-white/5 dark:text-cloud-white/70 dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-md'
+                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold'
                 }`}>
                 Casas
               </button>
@@ -127,8 +127,8 @@ export default function Home() {
                 onClick={() => setSelectedType('apartment')}
                 className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   selectedType === 'apartment'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-md dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold dark:bg-white/5 dark:border-cloud-white/5 dark:text-cloud-white/70 dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-md'
+                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold'
                 }`}>
                 Apartamentos
               </button>
@@ -136,8 +136,8 @@ export default function Home() {
                 onClick={() => setSelectedType('villa')}
                 className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   selectedType === 'villa'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-md dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold dark:bg-white/5 dark:border-cloud-white/5 dark:text-cloud-white/70 dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-md'
+                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold'
                 }`}>
                 Villas
               </button>
@@ -145,13 +145,13 @@ export default function Home() {
                 onClick={() => setSelectedType('penthouse')}
                 className={`whitespace-nowrap px-6 py-2.5 rounded-full text-sm font-medium transition-all ${
                   selectedType === 'penthouse'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-md dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold dark:bg-white/5 dark:border-cloud-white/5 dark:text-cloud-white/70 dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-md'
+                    : 'bg-frosted-pearl border border-midnight-onyx/5 text-midnight-onyx/70 hover:text-midnight-onyx hover:border-desert-gold'
                 }`}>
                 Penthouses
               </button>
 
-              <div className="w-px h-6 bg-midnight-onyx/10 dark:bg-cloud-white/10 mx-2"></div>
+              <div className="w-px h-6 bg-midnight-onyx/10 mx-2"></div>
 
               {/* Reset filter button */}
               <button
@@ -160,7 +160,7 @@ export default function Home() {
                   setSelectedTransaction('all');
                   setSearchQuery('');
                 }}
-                className="whitespace-nowrap flex items-center gap-1 px-4 py-2.5 rounded-full text-midnight-onyx/70 hover:text-desert-gold dark:text-cloud-white/70 dark:hover:text-desert-gold font-medium text-sm transition-colors">
+                className="whitespace-nowrap flex items-center gap-1 px-4 py-2.5 rounded-full text-midnight-onyx/70 hover:text-desert-gold font-medium text-sm transition-colors">
                 <Tune size={16} /> Limpiar
               </button>
             </div>
@@ -172,10 +172,10 @@ export default function Home() {
           <section className="mb-16">
             <div className="flex items-end justify-between mb-8">
               <div>
-                <h2 className="text-2xl font-light tracking-tight text-midnight-onyx dark:text-cloud-white">
+                <h2 className="text-2xl font-light tracking-tight text-midnight-onyx">
                   Colecciones Exclusivas
                 </h2>
-                <p className="text-midnight-onyx/60 dark:text-cloud-white/60 mt-1 text-sm">
+                <p className="text-midnight-onyx/60 mt-1 text-sm">
                   Propiedades seleccionadas para el ojo exigente.
                 </p>
               </div>
@@ -198,22 +198,22 @@ export default function Home() {
         <section>
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
-              <h2 className="text-2xl font-light tracking-tight text-midnight-onyx dark:text-cloud-white">
+              <h2 className="text-2xl font-light tracking-tight text-midnight-onyx">
                 Nuevas Oportunidades
               </h2>
-              <p className="text-midnight-onyx/60 dark:text-cloud-white/60 mt-1 text-sm">
+              <p className="text-midnight-onyx/60 mt-1 text-sm">
                 Propiedades recién añadidas a nuestro catálogo.
               </p>
             </div>
 
             {/* Buy / Rent Filter Selector */}
-            <div className="flex bg-frosted-pearl dark:bg-white/5 p-1 rounded-xl self-start sm:self-auto border border-midnight-onyx/5 dark:border-cloud-white/5">
+            <div className="flex bg-frosted-pearl p-1 rounded-xl self-start sm:self-auto border border-midnight-onyx/5">
               <button
                 onClick={() => setSelectedTransaction('all')}
                 className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
                   selectedTransaction === 'all'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-sm dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'text-midnight-onyx/60 dark:text-cloud-white/60 hover:text-midnight-onyx dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-sm'
+                    : 'text-midnight-onyx/60 hover:text-midnight-onyx'
                 }`}>
                 Todos
               </button>
@@ -221,8 +221,8 @@ export default function Home() {
                 onClick={() => setSelectedTransaction('sale')}
                 className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
                   selectedTransaction === 'sale'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-sm dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'text-midnight-onyx/60 dark:text-cloud-white/60 hover:text-midnight-onyx dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-sm'
+                    : 'text-midnight-onyx/60 hover:text-midnight-onyx'
                 }`}>
                 Comprar
               </button>
@@ -230,8 +230,8 @@ export default function Home() {
                 onClick={() => setSelectedTransaction('rent')}
                 className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
                   selectedTransaction === 'rent'
-                    ? 'bg-midnight-onyx text-cloud-white shadow-sm dark:bg-cloud-white dark:text-midnight-onyx'
-                    : 'text-midnight-onyx/60 dark:text-cloud-white/60 hover:text-midnight-onyx dark:hover:text-cloud-white'
+                    ? 'bg-midnight-onyx text-cloud-white shadow-sm'
+                    : 'text-midnight-onyx/60 hover:text-midnight-onyx'
                 }`}>
                 Rentar
               </button>
@@ -239,8 +239,8 @@ export default function Home() {
           </div>
 
           {filteredProperties.length === 0 ? (
-            <div className="text-center py-16 bg-frosted-pearl dark:bg-white/5 rounded-2xl border border-dashed border-midnight-onyx/10 dark:border-cloud-white/10">
-              <p className="text-lg text-midnight-onyx/60 dark:text-cloud-white/60">
+            <div className="text-center py-16 bg-frosted-pearl rounded-2xl border border-dashed border-midnight-onyx/10">
+              <p className="text-lg text-midnight-onyx/60">
                 No encontramos propiedades que coincidan con tu búsqueda.
               </p>
               <button
@@ -266,7 +266,7 @@ export default function Home() {
                 <div className="mt-12 text-center">
                   <button
                     onClick={handleLoadMore}
-                    className="px-8 py-3 bg-frosted-pearl hover:bg-frosted-pearl/80 border border-midnight-onyx/10 text-midnight-onyx font-medium rounded-xl transition-all hover:shadow-md dark:bg-white/5 dark:border-cloud-white/10 dark:text-cloud-white dark:hover:bg-white/10">
+                    className="px-8 py-3 bg-frosted-pearl hover:bg-frosted-pearl/80 border border-midnight-onyx/10 text-midnight-onyx font-medium rounded-xl transition-all hover:shadow-md">
                     Cargar más propiedades
                   </button>
                 </div>
