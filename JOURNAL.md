@@ -4,6 +4,25 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-23] — Conexión con Supabase y Paginación en Servidor
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Base de datos de Supabase en producción y HomeScreen migrado por completo a Server-Side Pagination en Next.js 16.
+
+### Cambios Realizados:
+
+- **Supabase & DDL**:
+  - Ejecutada migración para crear la tabla `properties` en el esquema público de Supabase y configuradas políticas de seguridad RLS de solo lectura.
+  - Sembrado el set completo de 20 propiedades.
+- **Conectividad REST**:
+  - Creado un cliente nativo optimizado en [app/lib/supabase.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/lib/supabase.ts) que consume la API REST de Supabase mediante `fetch` nativo sin necesidad de dependencias npm extras.
+- **HomeScreen & Componentes**:
+  - Refactorizado [app/page.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/page.tsx) a un Server Component asíncrono para gestionar la carga de datos del lado del servidor.
+  - Creados los componentes de control de búsqueda/filtrado ([components/SearchAndFilters.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/SearchAndFilters.tsx)) y paginación ([components/Pagination.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/Pagination.tsx)) para sincronizar los estados con la barra de navegación y la URL.
+  - Optimizado [components/Navbar.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/Navbar.tsx) para resolver compatibilidad con Server Components.
+
+---
+
 ## [2026-07-23] — Inclusión de 10 Nuevas Propiedades Mock
 
 - **Autor**: Antigravity (AI Coding Assistant)

@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
           {/* Right Action Icons */}
           <div className="flex items-center space-x-6">
             <button
-              onClick={onSearchClick}
+              onClick={onSearchClick || (() => document.getElementById('search-input')?.focus())}
               className="text-midnight-onyx hover:text-desert-gold transition-colors"
               aria-label="Buscar">
               <Search size={22} />
