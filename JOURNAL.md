@@ -4,6 +4,15 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-23] — Inclusión de 10 Nuevas Propiedades Mock
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Base de datos de prueba ampliada a un total de 20 propiedades.
+- **Cambios Realizados**:
+  - Se añadieron 10 nuevas propiedades en [app/data/mockProperties.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/data/mockProperties.ts) (IDs `prop-11` a `prop-20`) cubriendo diferentes categorías (villas, apartamentos, casas y penthouses) tanto en venta como en renta en distintas localizaciones reales de EE. UU. (Malibu, Seattle, Chicago, Austin, etc.).
+
+---
+
 ## [2026-07-23] — Remoción del Modo Oscuro
 
 - **Autor**: Antigravity (AI Coding Assistant)
