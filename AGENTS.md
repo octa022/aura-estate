@@ -19,3 +19,4 @@ Todos los agentes deben leer, seguir y hacer referencia estricta a las pautas y 
 1. **Integridad del Diseño**: Adhiérete estrictamente a la paleta de colores especificada (Midnight Onyx, Desert Gold, Frosted Pearl, Cloud White, Sage Whisper).
 2. **Instalación de Librerías**: No instales ningún paquete de NPM, librería o dependencia sin consultar y recibir aprobación previa del usuario.
 3. **UI Reutilizable y Modular**: Crea componentes reutilizables y organiza el enrutamiento por carpetas de manera limpia, según se define en las especificaciones del diseño.
+4. **Rutas Relativas en Documentación**: Utiliza siempre rutas relativas en lugar de rutas absolutas (`file:///...`) al crear enlaces a archivos en cualquier documento Markdown (como `JOURNAL.md` o cualquier bitácora/walkthrough), asegurando la portabilidad del repositorio.

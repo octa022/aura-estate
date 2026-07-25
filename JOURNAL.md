@@ -4,6 +4,26 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-25] — Alineación del Diseño del Home con Stitch: Tarjetas Destacadas y Reubicación de Nuevas Oportunidades
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Componentes del frontend reestructurados para alinearse al orden y estilo visual del Home Discover Screen de Stitch.
+
+### Cambios Realizados:
+
+- **Componentes de Frontend**:
+  - Modificado [components/PropertyCard.tsx](components/PropertyCard.tsx) para eliminar el layout horizontal de las tarjetas destacadas (`featured`).
+  - Añadido un gradiente oscuro absoluto (`bg-gradient-to-t`) en la base de la imagen para mejorar el contraste visual y la estética del título sobre la tarjeta.
+  - Reubicado el precio al encabezado superior derecho del cuerpo de la tarjeta destacado, logrando fidelidad visual al diseño de Stitch.
+  - Quitado el col-span interno permitiendo que las tarjetas se ubiquen limpiamente lado a lado en la cuadrícula de 2 columnas de `app/page.tsx`.
+  - Dividido el componente `SearchAndFilters` en [components/SearchAndFilters.tsx](components/SearchAndFilters.tsx) para separar la cabecera e interactividad de la sección "Nuevas Oportunidades" (`NewOpportunitiesHeader`).
+  - Modificado [app/page.tsx](app/page.tsx) para quitar `initialPurpose` del buscador superior y renderizar `<NewOpportunitiesHeader />` exactamente debajo de la sección de Colecciones Exclusivas y antes del grid secundario de propiedades estándar, corrigiendo la jerarquía visual de la página.
+- **Verificación**:
+  - Verificada la compilación exitosa con TypeScript (`tsc --noEmit`).
+  - Linter ejecutado correctamente.
+
+
+
 ## [2026-07-23] — Incorporación de bandera 'Featured' para Colecciones Exclusivas
 
 - **Autor**: Antigravity (AI Coding Assistant)
@@ -14,12 +34,12 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 - **Base de Datos (Supabase)**:
   - Creada la columna `is_featured` en la tabla `properties` y marcados los registros destacados iniciales (`prop-1`, `prop-9`, `prop-14`, `prop-20`) con `true`.
 - **Modelos y Frontend**:
-  - Actualizado `Property` en [app/data/mockProperties.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/data/mockProperties.ts) para incluir `isFeatured?: boolean` y marcadas las correspondientes propiedades simuladas.
-  - Modificado [app/lib/supabase.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/lib/supabase.ts) para mapear `is_featured` a `isFeatured` y actualizar filtros de obtención (`fetchProperties` excluye destacadas, `fetchFeaturedProperties` obtiene solo destacadas).
+  - Actualizado `Property` en [app/data/mockProperties.ts](app/data/mockProperties.ts) para incluir `isFeatured?: boolean` y marcadas las correspondientes propiedades simuladas.
+  - Modificado [app/lib/supabase.ts](app/lib/supabase.ts) para mapear `is_featured` a `isFeatured` y actualizar filtros de obtención (`fetchProperties` excluye destacadas, `fetchFeaturedProperties` obtiene solo destacadas).
   - Creada interfaz `SupabaseProperty` en `app/lib/supabase.ts` para eliminar todos los tipos `any` inseguros.
 - **Calidad de Código**:
-  - Corregido error de redirección Next.js en [app/page.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/page.tsx) reemplazando `<a>` con `<Link>`.
-  - Corregido warning de hooks de React en [components/SearchAndFilters.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/SearchAndFilters.tsx) al cambiar la sincronización basada en `useEffect` por sincronización directa en renderizado.
+  - Corregido error de redirección Next.js en [app/page.tsx](app/page.tsx) reemplazando `<a>` con `<Link>`.
+  - Corregido warning de hooks de React en [components/SearchAndFilters.tsx](components/SearchAndFilters.tsx) al cambiar la sincronización basada en `useEffect` por sincronización directa en renderizado.
   - Verificada la compilación exitosa y el linter sin alertas.
 
 ---
@@ -35,11 +55,11 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
   - Ejecutada migración para crear la tabla `properties` en el esquema público de Supabase y configuradas políticas de seguridad RLS de solo lectura.
   - Sembrado el set completo de 20 propiedades.
 - **Conectividad REST**:
-  - Creado un cliente nativo optimizado en [app/lib/supabase.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/lib/supabase.ts) que consume la API REST de Supabase mediante `fetch` nativo sin necesidad de dependencias npm extras.
+  - Creado un cliente nativo optimizado en [app/lib/supabase.ts](app/lib/supabase.ts) que consume la API REST de Supabase mediante `fetch` nativo sin necesidad de dependencias npm extras.
 - **HomeScreen & Componentes**:
-  - Refactorizado [app/page.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/page.tsx) a un Server Component asíncrono para gestionar la carga de datos del lado del servidor.
-  - Creados los componentes de control de búsqueda/filtrado ([components/SearchAndFilters.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/SearchAndFilters.tsx)) y paginación ([components/Pagination.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/Pagination.tsx)) para sincronizar los estados con la barra de navegación y la URL.
-  - Optimizado [components/Navbar.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/Navbar.tsx) para resolver compatibilidad con Server Components.
+  - Refactorizado [app/page.tsx](app/page.tsx) a un Server Component asíncrono para gestionar la carga de datos del lado del servidor.
+  - Creados los componentes de control de búsqueda/filtrado ([components/SearchAndFilters.tsx](components/SearchAndFilters.tsx)) y paginación ([components/Pagination.tsx](components/Pagination.tsx)) para sincronizar los estados con la barra de navegación y la URL.
+  - Optimizado [components/Navbar.tsx](components/Navbar.tsx) para resolver compatibilidad con Server Components.
 
 ---
 
@@ -48,7 +68,7 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 - **Autor**: Antigravity (AI Coding Assistant)
 - **Estado del Proyecto**: Base de datos de prueba ampliada a un total de 20 propiedades.
 - **Cambios Realizados**:
-  - Se añadieron 10 nuevas propiedades en [app/data/mockProperties.ts](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/data/mockProperties.ts) (IDs `prop-11` a `prop-20`) cubriendo diferentes categorías (villas, apartamentos, casas y penthouses) tanto en venta como en renta en distintas localizaciones reales de EE. UU. (Malibu, Seattle, Chicago, Austin, etc.).
+  - Se añadieron 10 nuevas propiedades en [app/data/mockProperties.ts](app/data/mockProperties.ts) (IDs `prop-11` a `prop-20`) cubriendo diferentes categorías (villas, apartamentos, casas y penthouses) tanto en venta como en renta en distintas localizaciones reales de EE. UU. (Malibu, Seattle, Chicago, Austin, etc.).
 
 ---
 
@@ -59,11 +79,11 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ### Cambios Realizados:
 
-- **Estilos Globales**: Removida la regla `@media (prefers-color-scheme: dark)` de [app/globals.css](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/globals.css) para evitar que se inviertan las variables del tema de forma automática por el sistema.
+- **Estilos Globales**: Removida la regla `@media (prefers-color-scheme: dark)` de [app/globals.css](app/globals.css) para evitar que se inviertan las variables del tema de forma automática por el sistema.
 - **Componentes**: Eliminadas todas las variantes de clase `dark:` en:
-  - [components/Navbar.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/Navbar.tsx)
-  - [components/PropertyCard.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/components/PropertyCard.tsx)
-  - [app/page.tsx](file:///c:/Users/Octavio/OneDrive/Documentos/Repositorios/OCTA/aura-estate/app/page.tsx)
+  - [components/Navbar.tsx](components/Navbar.tsx)
+  - [components/PropertyCard.tsx](components/PropertyCard.tsx)
+  - [app/page.tsx](app/page.tsx)
 
 ---
 

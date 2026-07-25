@@ -7,7 +7,6 @@ import { Search, Tune } from './Icons';
 interface SearchAndFiltersProps {
   initialSearch: string;
   initialType: string;
-  initialPurpose: string;
 }
 
 type PropertyType = 'all' | 'house' | 'apartment' | 'villa' | 'penthouse';
@@ -16,7 +15,6 @@ type TransactionType = 'all' | 'sale' | 'rent';
 export const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
   initialSearch,
   initialType,
-  initialPurpose,
 }) => {
   const router = useRouter();
   const pathname = usePathname();
@@ -121,34 +119,64 @@ export const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
         </button>
       </div>
 
-      {/* Transaction Selector (Buy/Rent) */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mt-12 mb-4 gap-4">
-        <div>
-          <h2 className="text-2xl font-light tracking-tight text-midnight-onyx">
-            Nuevas Oportunidades
-          </h2>
-          <p className="text-midnight-onyx/60 mt-1 text-sm">
-            Propiedades recién añadidas a nuestro catálogo.
-          </p>
-        </div>
+    </div>
+  );
+};
 
-        <div className="flex bg-frosted-pearl p-1 rounded-xl self-start sm:self-auto border border-midnight-onyx/5">
-          {(['all', 'sale', 'rent'] as TransactionType[]).map(purpose => (
-            <button
-              key={purpose}
-              onClick={() => updateFilters({ purpose })}
-              className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${
-                initialPurpose === purpose
-                  ? 'bg-midnight-onyx text-cloud-white shadow-sm'
-                  : 'text-midnight-onyx/60 hover:text-midnight-onyx'
-              }`}
-            >
-              {purpose === 'all' && 'Todos'}
-              {purpose === 'sale' && 'Comprar'}
-              {purpose === 'rent' && 'Rentar'}
-            </button>
-          ))}
-        </div>
+interface NewOpportunitiesHeaderProps {
+  initialPurpose: string;
+}
+
+export const NewOpportunitiesHeader: React.FC<NewOpportunitiesHeaderProps> = ({
+  initialPurpose,
+}) => {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const updateFilters = (updates: Record<string, string | null>) => {
+    const params = new URLSearchParams(searchParams.toString());
+    
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value === null || value === 'all' || value === '') {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    });
+
+    params.delete('page');
+
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
+  return (
+    <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+      <div>
+        <h2 className="text-2xl font-light tracking-tight text-midnight-onyx">
+          Nuevas Oportunidades
+        </h2>
+        <p className="text-midnight-onyx/60 mt-1 text-sm">
+          Propiedades recién añadidas a nuestro catálogo.
+        </p>
+      </div>
+
+      <div className="flex bg-frosted-pearl p-1 rounded-xl self-start sm:self-auto border border-midnight-onyx/5">
+        {(['all', 'sale', 'rent'] as TransactionType[]).map(purpose => (
+          <button
+            key={purpose}
+            onClick={() => updateFilters({ purpose })}
+            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all cursor-pointer ${
+              initialPurpose === purpose
+                ? 'bg-midnight-onyx text-cloud-white shadow-sm'
+                : 'text-midnight-onyx/60 hover:text-midnight-onyx'
+            }`}
+          >
+            {purpose === 'all' && 'Todos'}
+            {purpose === 'sale' && 'Comprar'}
+            {purpose === 'rent' && 'Rentar'}
+          </button>
+        ))}
       </div>
     </div>
   );

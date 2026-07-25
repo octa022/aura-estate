@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Navbar } from '../components/Navbar';
 import { PropertyCard } from '../components/PropertyCard';
-import { SearchAndFilters } from '../components/SearchAndFilters';
+import { SearchAndFilters, NewOpportunitiesHeader } from '../components/SearchAndFilters';
 import { Pagination } from '../components/Pagination';
 import { fetchProperties, fetchFeaturedProperties } from './lib/supabase';
 import { ArrowRight } from '../components/Icons';
@@ -51,7 +51,6 @@ export default async function Home({ searchParams }: PageProps) {
             <SearchAndFilters
               initialSearch={search}
               initialType={type}
-              initialPurpose={purpose}
             />
           </div>
         </section>
@@ -86,6 +85,8 @@ export default async function Home({ searchParams }: PageProps) {
 
         {/* SECONDARY GRID - NEW IN MARKET */}
         <section>
+          <NewOpportunitiesHeader initialPurpose={purpose} />
+
           {standardProperties.length === 0 ? (
             <div className="text-center py-16 bg-frosted-pearl rounded-2xl border border-dashed border-midnight-onyx/10">
               <p className="text-lg text-midnight-onyx/60">

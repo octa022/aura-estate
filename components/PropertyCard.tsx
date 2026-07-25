@@ -21,12 +21,9 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
 
   return (
     <article
-      className={`group relative overflow-hidden rounded-2xl bg-frosted-pearl transition-all duration-300 hover:shadow-xl cursor-pointer flex flex-col ${
-        featured ? 'lg:flex-row lg:col-span-2' : 'h-full'
-      }`}>
+      className="group relative overflow-hidden rounded-2xl bg-frosted-pearl transition-all duration-300 hover:shadow-xl cursor-pointer flex flex-col h-full">
       {/* Property Image Container */}
-      <div
-        className={`relative overflow-hidden aspect-[4/3] ${featured ? 'w-full lg:w-1/2 lg:aspect-auto lg:min-h-[320px]' : 'w-full'}`}>
+      <div className="relative overflow-hidden aspect-[4/3] w-full">
         <Image
           alt={property.title}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -36,8 +33,12 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
           priority={featured}
         />
 
+        {featured && (
+          <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent opacity-60 pointer-events-none z-10" />
+        )}
+
         {/* Status Badges */}
-        <div className="absolute top-4 left-4 flex flex-col gap-2">
+        <div className="absolute top-4 left-4 flex flex-col gap-2 z-20">
           {property.isExclusive && (
             <span className="rounded-full bg-midnight-onyx/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cloud-white backdrop-blur-sm">
               Exclusivo
@@ -59,7 +60,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
             e.stopPropagation();
             setIsFavorite(!isFavorite);
           }}
-          className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-cloud-white/90 text-midnight-onyx backdrop-blur-sm transition-all hover:bg-desert-gold hover:text-midnight-onyx"
+          className="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-cloud-white/90 text-midnight-onyx backdrop-blur-sm transition-all hover:bg-desert-gold hover:text-midnight-onyx z-20"
           aria-label="Agregar a favoritos">
           {isFavorite ? (
             <HeartFilled size={20} className="text-red-500 scale-110 transition-transform" />
@@ -70,8 +71,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
       </div>
 
       {/* Property Details */}
-      <div
-        className={`p-6 flex flex-col flex-grow justify-between ${featured ? 'w-full lg:w-1/2' : ''}`}>
+      <div className="p-6 flex flex-col flex-grow justify-between">
         <div>
           <div className="flex justify-between items-start mb-2">
             <div>
@@ -83,21 +83,33 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
                 {property.location}
               </p>
             </div>
+            {featured && (
+              <span className="text-xl font-semibold text-desert-gold whitespace-nowrap ml-4">
+                {formattedPrice}
+                {property.purpose === 'rent' && (
+                  <span className="text-xs font-normal text-midnight-onyx/60">
+                    /mes
+                  </span>
+                )}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Price & Specs */}
         <div className="mt-6 pt-6 border-t border-midnight-onyx/5">
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-2xl font-semibold text-desert-gold">
-              {formattedPrice}
-              {property.purpose === 'rent' && (
-                <span className="text-sm font-normal text-midnight-onyx/60">
-                  /mes
-                </span>
-              )}
-            </span>
-          </div>
+          {!featured && (
+            <div className="flex justify-between items-center mb-4">
+              <span className="text-2xl font-semibold text-desert-gold">
+                {formattedPrice}
+                {property.purpose === 'rent' && (
+                  <span className="text-sm font-normal text-midnight-onyx/60">
+                    /mes
+                  </span>
+                )}
+              </span>
+            </div>
+          )}
 
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-1.5 text-sm text-midnight-onyx/70">
