@@ -4,6 +4,18 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-31] — Creación y Condensación de la Guía de Buenas Prácticas Inmobiliarias en Next.js
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Documento de buenas prácticas en formato condensado de bullet points integrado en la carpeta `antigravity/`.
+
+### Cambios Realizados:
+
+- **Documentación de Proyecto**:
+  - Creado y estructurado el archivo [antigravity/best-practices.md](antigravity/best-practices.md) con bullet points directos y condensados por ejes clave: Rendimiento App Router, SEO e imagen pública, UX/UI Inmobiliario, Supabase/PostGIS, Captura de Leads e Ideas Clave para Aura Estate.
+
+---
+
 ## [2026-07-25] — Alineación del Diseño del Home con Stitch: Tarjetas Destacadas y Reubicación de Nuevas Oportunidades
 
 - **Autor**: Antigravity (AI Coding Assistant)
