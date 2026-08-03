@@ -47,3 +47,11 @@ Otras tareas para lograrlo son:
 - Hacer la navegación a esas pantallas y poder regresar al home con el icono o logo de la empresa que está en el navbar.
 - Para la parte de mapas, usaremos Leaflet.
 - Seguir el diseño proporcionado en Property Details Screen de StitchMCP.
+
+======
+
+Actualmente en la base de datos tenemos los campos "images" e "image". Necesito que solo usemos el campo "images", es decir, el arreglo de imágenes, para evitar duplicidad.
+
+- Necesito que cada propiedad tenga al menos 3 imágenes adicionales. Las imágenes pueden ser placeholders o cualquier otra imagen de internet para fines de desarrollo.
+
+- Crea un archivo de migración como respaldo en el sistema que migre los datos del campo "image" al arreglo "images" y elimine el campo "image" una vez validado que no hay pérdida de información.

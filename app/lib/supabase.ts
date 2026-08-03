@@ -25,8 +25,7 @@ export interface SupabaseProperty {
   beds: number;
   baths: string | number;
   area: string | number;
-  image: string;
-  images?: string[];
+  images: string[];
   type: 'house' | 'apartment' | 'villa' | 'penthouse';
   purpose: 'sale' | 'rent';
   is_exclusive: boolean;
@@ -46,6 +45,7 @@ export interface SupabaseProperty {
 }
 
 export function mapSupabaseItemToProperty(item: SupabaseProperty): Property {
+  const mainImage = item.images && item.images.length > 0 ? item.images[0] : '';
   const prop: Property = {
     id: item.id,
     slug: item.slug || getPropertySlug({
@@ -56,7 +56,7 @@ export function mapSupabaseItemToProperty(item: SupabaseProperty): Property {
       beds: item.beds,
       baths: Number(item.baths),
       area: Number(item.area),
-      image: item.image,
+      image: mainImage,
       type: item.type,
       purpose: item.purpose,
     }),
@@ -66,8 +66,8 @@ export function mapSupabaseItemToProperty(item: SupabaseProperty): Property {
     beds: item.beds,
     baths: parseFloat(String(item.baths)),
     area: parseFloat(String(item.area)),
-    image: item.image,
-    images: item.images && item.images.length > 0 ? item.images : [item.image],
+    image: mainImage,
+    images: item.images && item.images.length > 0 ? item.images : [mainImage],
     type: item.type,
     purpose: item.purpose,
     isExclusive: item.is_exclusive,
@@ -80,7 +80,7 @@ export function mapSupabaseItemToProperty(item: SupabaseProperty): Property {
       ? {
           name: item.agent_name,
           title: item.agent_title || 'Agente Inmobiliario',
-          avatar: item.agent_avatar || item.image,
+          avatar: item.agent_avatar || mainImage,
           phone: item.agent_phone,
           email: item.agent_email,
         }

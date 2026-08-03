@@ -20,3 +20,6 @@ Todos los agentes deben leer, seguir y hacer referencia estricta a las pautas y 
 2. **Instalación de Librerías**: No instales ningún paquete de NPM, librería o dependencia sin consultar y recibir aprobación previa del usuario.
 3. **UI Reutilizable y Modular**: Crea componentes reutilizables y organiza el enrutamiento por carpetas de manera limpia, según se define en las especificaciones del diseño.
 4. **Rutas Relativas en Documentación**: Utiliza siempre rutas relativas en lugar de rutas absolutas (`file:///...`) al crear enlaces a archivos en cualquier documento Markdown (como `JOURNAL.md` o cualquier bitácora/walkthrough), asegurando la portabilidad del repositorio.
+5. **Archivos de Migración Secuenciales**: Cada vez que se realice cualquier modificación en la base de datos de Supabase (SB), se debe crear y documentar su respectivo script de base de datos como respaldo o registro en el directorio [antigravity/](antigravity/). Estos archivos deben seguir una nomenclatura numérica secuencial de 4 dígitos (ej. `0001_nombre_del_script.sql`, `0002_nombre_del_script.sql`), asegurando que siempre se respete y visualice el orden de aplicación de los cambios.
+
+

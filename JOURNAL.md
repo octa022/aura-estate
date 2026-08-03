@@ -4,6 +4,28 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-08-03] — Migración de Imágenes y Limpieza de Esquema en Supabase
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Columna `image` removida de la base de datos de Supabase. El campo `images` (arreglo) ahora actúa como la fuente única de la galería y la imagen principal.
+
+### Cambios Realizados:
+
+- **Base de Datos (Supabase MCP)**:
+  - Migrado el valor de la columna `image` dentro del arreglo `images` si no estaba presente.
+  - Actualizadas todas las propiedades de la base de datos para que tengan un mínimo de 4 imágenes (1 principal y al menos 3 imágenes adicionales de desarrollo/placeholders).
+  - Eliminada la columna `image` de la tabla `properties` para evitar duplicidad de datos.
+  - Creado el archivo de migración como respaldo en el sistema: [antigravity/0002_migration_images_cleanup.sql](antigravity/0002_migration_images_cleanup.sql).
+- **Modelo de Datos y Mapeo**:
+  - Modificado [app/lib/supabase.ts](app/lib/supabase.ts) para remover la propiedad `image` del tipo de datos de Supabase `SupabaseProperty` y derivar `mainImage` y la propiedad `image` mapeada de la primera posición de la galería (`images[0]`).
+- **Configuración de Next.js**:
+  - Añadido `images.unsplash.com` en `images.remotePatterns` dentro de [next.config.ts](next.config.ts) para permitir la carga y renderizado optimizado de las imágenes de Unsplash que actúan como placeholders en el desarrollo.
+- **Verificación**:
+  - Verificado que el arreglo de imágenes ahora contiene 4 elementos en todas las propiedades.
+  - La aplicación ahora consume directamente el campo `images` sin fallos.
+
+---
+
 ## [2026-07-31] — Implementación de la Pantalla de Detalle de Propiedad (Property Details Screen), Leaflet y Migración Supabase via MCP
 
 - **Autor**: Antigravity (AI Coding Assistant)
@@ -12,7 +34,7 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 ### Cambios Realizados:
 
 - **Base de Datos (Supabase MCP)**:
-  - Conectado el servidor MCP de Supabase y aplicada la migración DDL [antigravity/schema_update_property_details.sql](antigravity/schema_update_property_details.sql) (`add_property_details_columns_and_slugs`).
+  - Conectado el servidor MCP de Supabase y aplicada la migración DDL [antigravity/0001_schema_update_property_details.sql](antigravity/0001_schema_update_property_details.sql) (`add_property_details_columns_and_slugs`).
   - Creadas las columnas `slug`, `images`, `description`, `amenities`, `lat`, `lng`, `agent_*`, `garage`, `year_built` e índice `idx_properties_slug` en la tabla `properties`.
 - **Rutas y Servidor (Next.js App Router)**:
   - Creada la ruta dinámica [app/propiedades/[slug]/page.tsx](app/propiedades/[slug]/page.tsx) con `generateMetadata` dinámico para Open Graph (redes sociales y WhatsApp).
