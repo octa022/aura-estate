@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Apartment, Search, Notification } from './Icons';
 
 interface NavbarProps {
@@ -16,14 +17,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onSearchClick }) => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Brand/Logo */}
-          <div className="flex items-center gap-2 cursor-pointer group">
+          <Link href="/" className="flex items-center gap-2 cursor-pointer group">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-midnight-onyx text-cloud-white transition-all group-hover:bg-desert-gold">
               <Apartment size={20} />
             </div>
             <span className="text-xl font-semibold tracking-tight text-midnight-onyx transition-colors group-hover:text-desert-gold">
               Aura Estate
             </span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">

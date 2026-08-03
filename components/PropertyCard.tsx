@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Property } from '../app/data/mockProperties';
+import Link from 'next/link';
+import { Property, getPropertySlug } from '../app/data/mockProperties';
 import { Bed, Bath, Ruler, Heart, HeartFilled, Pin } from './Icons';
 
 interface PropertyCardProps {
@@ -12,6 +13,7 @@ interface PropertyCardProps {
 
 export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured = false }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+  const propertySlug = getPropertySlug(property);
 
   const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -20,18 +22,19 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
   }).format(property.price);
 
   return (
-    <article
-      className="group relative overflow-hidden rounded-2xl bg-frosted-pearl transition-all duration-300 hover:shadow-xl cursor-pointer flex flex-col h-full">
+    <article className="group relative overflow-hidden rounded-2xl bg-frosted-pearl transition-all duration-300 hover:shadow-xl flex flex-col h-full">
       {/* Property Image Container */}
       <div className="relative overflow-hidden aspect-[4/3] w-full">
-        <Image
-          alt={property.title}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          src={property.image}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          priority={featured}
-        />
+        <Link href={`/propiedades/${propertySlug}`} className="block h-full w-full">
+          <Image
+            alt={property.title}
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            src={property.image}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority={featured}
+          />
+        </Link>
 
         {featured && (
           <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent opacity-60 pointer-events-none z-10" />
@@ -57,6 +60,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
         {/* Favorite Toggle Button */}
         <button
           onClick={e => {
+            e.preventDefault();
             e.stopPropagation();
             setIsFavorite(!isFavorite);
           }}
@@ -71,11 +75,11 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
       </div>
 
       {/* Property Details */}
-      <div className="p-6 flex flex-col flex-grow justify-between">
+      <Link href={`/propiedades/${propertySlug}`} className="p-6 flex flex-col flex-grow justify-between group/link">
         <div>
           <div className="flex justify-between items-start mb-2">
             <div>
-              <h3 className="text-xl font-medium text-midnight-onyx transition-colors group-hover:text-desert-gold">
+              <h3 className="text-xl font-medium text-midnight-onyx transition-colors group-hover/link:text-desert-gold">
                 {property.title}
               </h3>
               <p className="mt-1 flex items-center gap-1 text-sm text-midnight-onyx/60">
@@ -130,7 +134,7 @@ export const PropertyCard: React.FC<PropertyCardProps> = ({ property, featured =
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 };

@@ -4,6 +4,33 @@ Este archivo registra el progreso, las decisiones de diseño, los cambios releva
 
 ---
 
+## [2026-07-31] — Implementación de la Pantalla de Detalle de Propiedad (Property Details Screen), Leaflet y Migración Supabase via MCP
+
+- **Autor**: Antigravity (AI Coding Assistant)
+- **Estado del Proyecto**: Base de datos de Supabase actualizada via MCP con columnas de slugs, imágenes múltiples, coordenadas y amenidades. Vistas de detalle en Next.js App Router integradas con la BD.
+
+### Cambios Realizados:
+
+- **Base de Datos (Supabase MCP)**:
+  - Conectado el servidor MCP de Supabase y aplicada la migración DDL [antigravity/schema_update_property_details.sql](antigravity/schema_update_property_details.sql) (`add_property_details_columns_and_slugs`).
+  - Creadas las columnas `slug`, `images`, `description`, `amenities`, `lat`, `lng`, `agent_*`, `garage`, `year_built` e índice `idx_properties_slug` en la tabla `properties`.
+- **Rutas y Servidor (Next.js App Router)**:
+  - Creada la ruta dinámica [app/propiedades/[slug]/page.tsx](app/propiedades/[slug]/page.tsx) con `generateMetadata` dinámico para Open Graph (redes sociales y WhatsApp).
+- **Modelo de Datos y Mapeo**:
+  - Actualizado [app/lib/supabase.ts](app/lib/supabase.ts) para mapear dinámicamente todas las nuevas columnas de la base de datos de Supabase (`slug`, `images`, `amenities`, `coordinates`, `agent`, etc.).
+- **Componentes de UI y Navegación**:
+  - Creado [components/PropertyGallery.tsx](components/PropertyGallery.tsx) con visor principal, tira de miniaturas activas y modal Lightbox de pantalla completa.
+  - Creado [components/PropertyMap.tsx](components/PropertyMap.tsx) integrando el mapa interactivo de Leaflet con pin personalizado en colores de marca (`Desert Gold` / `Midnight Onyx`).
+  - Creado [components/MortgageCalculatorModal.tsx](components/MortgageCalculatorModal.tsx) para estimar cuotas mensuales de hipoteca según enganche, plazo y tasa.
+  - Creado [components/PropertyDetailsContent.tsx](components/PropertyDetailsContent.tsx) organizando la información en columna principal y barra lateral pegajosa (*Sticky Sidebar*) matching exacto con la pantalla de Stitch.
+  - Actualizado [components/Navbar.tsx](components/Navbar.tsx) para envolver el isotipo de la marca en `<Link href="/">` y retornar al inicio.
+  - Actualizado [components/PropertyCard.tsx](components/PropertyCard.tsx) redirigiendo a la URL amigable `/propiedades/[slug]`.
+- **Verificación**:
+  - TypeScript compilado sin errores (`npx tsc --noEmit`).
+  - ESLint ejecutado limpiamente (`npx eslint .`).
+
+---
+
 ## [2026-07-31] — Creación y Condensación de la Guía de Buenas Prácticas Inmobiliarias en Next.js
 
 - **Autor**: Antigravity (AI Coding Assistant)

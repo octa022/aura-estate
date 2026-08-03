@@ -1,37 +1,49 @@
 Vamos a crear el HomeScreen con propiedades mock.
 
-Sigue @guidelines.md y las @intructions.md para crear el HomeScreen.
+Sigue @guidelines.md y @instructions.md para crear el HomeScreen.
 
 - Crea un set de datos mock para mostrar las propiedades que eventualmente vendrán desde una base de datos.
 
-- EL HomeScreen debe lucir igual al codigo usado en @code.html
+- El HomeScreen debe lucir igual al código usado en @code.html.
 
-supabase
-aura-state
-FYkG967GIEyxQemb
+supabase > aura-state
 
 ======
-Base de datos y paginación
 
-# Prompt
+# Base de datos y paginación
 
-Vamos a crear la base de datos en supabase, por favor usa el MCP de Supabase que ya esta conectado.
+Vamos a crear la base de datos en Supabase. Usa el MCP de Supabase que ya está conectado.
 
-Vamos a crear las propiedades en base de datos, y tambien necesito que en el homeScreen tengamos una paginacon de las propiedades.
+Vamos a crear las propiedades en base de datos, y también necesito que en el HomeScreen tengamos una paginación de las propiedades.
 
-La paginacion debe ser del lado del servidor usando funciones de Next.js
+La paginación debe ser del lado del servidor usando funciones de Next.js.
 
 ======
-Colecciones Exclusivas
 
-# Prompt
+# Colecciones Exclusivas
 
-Vamos a crear las "Colecciones Exclusivas" propiedades, necesito que tengamos una bandera en la DB que me permita asignar una propiedad como "Featured".
+Vamos a crear las "Colecciones Exclusivas" de propiedades. Necesito que tengamos una bandera en la DB que me permita asignar una propiedad como "Featured".
 
-=====
+======
 
-Necesito que crees un archivo llamado "best-practices.md" en la carpeta de antigravity.
+Necesito que crees un archivo llamado `best-practices.md` en la carpeta de antigravity.
 
-Ese archivo contendra las buenas practicas que debes de buscar en aplicaciones de Next.js que se dediquen a la venta de bienes raices, necesito bullet points, necesito buenas practicas, necesito recomendaciones e ideas.
+Ese archivo contendrá las buenas prácticas que debes buscar en aplicaciones de Next.js que se dediquen a la venta de bienes raíces. Necesito bullet points, buenas prácticas, recomendaciones e ideas.
 
-Necesito esto condensado y mas bullet points de los temas principales a seguir
+Necesito esto condensado y más bullet points de los temas principales a seguir.
+
+======
+
+# Pantalla de Detalle de Propiedad
+
+Vamos a trabajar en la pantalla de detalle de propiedad individual (Property Details Screen) que podemos ver usando StitchMCP.
+
+Necesito que sigas las buenas prácticas de @best-practices.md.
+
+Otras tareas para lograrlo son:
+
+- Crear un slug en las propiedades para poder hacer URLs amigables.
+- Adicionalmente, cada propiedad puede tener de una a N imágenes.
+- Hacer la navegación a esas pantallas y poder regresar al home con el icono o logo de la empresa que está en el navbar.
+- Para la parte de mapas, usaremos Leaflet.
+- Seguir el diseño proporcionado en Property Details Screen de StitchMCP.
